@@ -28,3 +28,4 @@ com\emergentes\dao\ServiceDAOimpl.class
 com\emergentes\dao\UserDAO.class
 com\emergentes\models\Query.class
 com\emergentes\models\Reservation.class
+com\emergentes\controllers\PatientController.class
