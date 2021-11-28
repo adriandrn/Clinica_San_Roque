@@ -1,0 +1,17 @@
+body{
+   overflow-x: hidden;
+   
+}
+
+.bg-success{
+   background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}
+
+body::-webkit-scrollbar{
+   width: 7px;
+}
+
+body::-webkit-scrollbar-thumb{
+   border-radius: 5px;
+   background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}
