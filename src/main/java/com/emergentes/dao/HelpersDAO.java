@@ -6,6 +6,7 @@
 package com.emergentes.dao;
 
 import com.emergentes.models.Pet;
+import com.emergentes.models.User;
 import com.emergentes.utiles.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,6 +26,7 @@ public class HelpersDAO {
     private static final String SQL_COUNT_PETS = "select count(*) as total from pets;";
     private static final String SQL_GET_BY_AJAX = "select p.*, u.name as user_name from pets p left join users u on p.user_id =u.id where p.specie = ? limit ?, 10;";
     private static final String SQL_COUNT_PETS_SPECIE = "select count(*) as total from pets where specie = ?;";
+    private static final String SQL_GET_AUTH = "select * from users where email = ? and password = ?;";
 
     public List<Pet> getAll() throws Exception {
         Connection conn = null;
@@ -183,5 +185,37 @@ public class HelpersDAO {
         }
 
         return list;
+    }
+
+    public User getAuth(String email, String password) throws Exception {
+        Connection conn=null;
+        PreparedStatement stmt=null;
+        ResultSet rs = null;
+        User u = new User();
+        try{
+            conn = ConexionBD.getConnection();
+            stmt = conn.prepareStatement(SQL_GET_AUTH);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            rs = stmt.executeQuery();
+            while (rs.next()) {                
+                u.setId(rs.getInt("id"));
+                u.setCi(rs.getString("ci"));
+                u.setName(rs.getString("name"));
+                u.setAddress(rs.getString("address"));
+                u.setPhone(rs.getString("phone"));
+                u.setEmail(rs.getString("email"));
+                u.setPassword(rs.getString("password"));
+                u.setRole(rs.getString("role"));
+                u.setPath(rs.getString("path"));
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace(System.out);
+        }finally{
+            ConexionBD.close(stmt);
+            ConexionBD.close(conn);
+        }
+        
+        return u;
     }
 }

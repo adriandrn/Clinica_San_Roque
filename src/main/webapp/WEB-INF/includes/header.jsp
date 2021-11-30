@@ -1,9 +1,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.emergentes.models.User"%>
 <%-- 
     Document   : inde
     Created on : 23 nov. 2021, 21:14:42
     Author     : DRN-PC
 --%>
+<%
+    User usu = (User) session.getAttribute("usu");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,13 +48,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="reservas.jsp">Reservas</a>
                         </li>
+
+                        <%
+                            
+
+                        %>
                         <li class="nav-item">
                             <a class="nav-link" href="../../admin/index.html">Administrador</a>
                         </li>
+                        <%                            
+                            
+                        %>
                     </ul>
-
-                    <a href="inicio_usu.html" class="btn btn-outline-light me-2 ">Ingresar</a>           
-                    <a href="registro_usu.html" class="btn btn-outline-light me-5 ">Registro</a>
+                    <c:if test="${auth.name != null}">
+                        <p>${auth.name}</p>
+                    </c:if>
+                    <c:if test="${auth.name == null}">                        
+                        <a href="AutenticationController?op=login" class="btn btn-outline-light me-2 ">Ingresar</a>           
+                        <a href="AutenticationController?op=register" class="btn btn-outline-light me-5 ">Registro</a>
+                    </c:if>
 
                 </div>
             </div>

@@ -32,7 +32,6 @@ public class HomeController extends HttpServlet {
             
             request.setAttribute("pets", list);
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            System.out.println("Test");
             
         } catch (SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);

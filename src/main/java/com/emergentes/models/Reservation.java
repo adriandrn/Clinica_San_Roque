@@ -5,9 +5,8 @@ import java.sql.Date;
 public class Reservation {
     private int id;
     private int user_id;
-    private int houor_id;
+    private int hour_id;
     private Date reservation_date;
-    private String reservation_hour;
 
     public Reservation() {
     }
@@ -28,12 +27,12 @@ public class Reservation {
         this.user_id = user_id;
     }
 
-    public int getHouor_id() {
-        return houor_id;
+    public int getHour_id() {
+        return hour_id;
     }
 
-    public void setHouor_id(int houor_id) {
-        this.houor_id = houor_id;
+    public void setHour_id(int hour_id) {
+        this.hour_id = hour_id;
     }
 
     public Date getReservation_date() {
@@ -42,15 +41,5 @@ public class Reservation {
 
     public void setReservation_date(Date reservation_date) {
         this.reservation_date = reservation_date;
-    }
-
-    public String getReservation_hour() {
-        return reservation_hour;
-    }
-
-    public void setReservation_hour(String reservation_hour) {
-        this.reservation_hour = reservation_hour;
-    }
-    
-    
+    }    
 }

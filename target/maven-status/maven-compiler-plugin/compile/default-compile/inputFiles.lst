@@ -4,6 +4,7 @@ D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\Hist
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\HourDAOimpl.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\PetDAOimpl.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\utiles\ConexionBD.java
+D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\controllers\AutenticationController.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\HourDAO.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\models\User.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\ServiceDAO.java
@@ -28,4 +29,5 @@ D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\Rese
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\models\Reservation.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\Reservation_serviceDAO.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\ReservationDAOimpl.java
+D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\controllers\UserController.java
 D:\Desarrollo\Emergentes-II\PetsVeterinary\src\main\java\com\emergentes\dao\QueryDAOimpl.java

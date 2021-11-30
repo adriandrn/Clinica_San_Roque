@@ -1,4 +1,5 @@
 com\emergentes\dao\UserDAOimpl.class
+com\emergentes\controllers\UserController.class
 com\emergentes\controllers\HomeController.class
 com\emergentes\dao\Attention_detailsDAO.class
 com\emergentes\dao\HourDAO.class
@@ -16,6 +17,7 @@ com\emergentes\models\Reservation_service.class
 com\emergentes\dao\QueryDAO.class
 com\emergentes\models\Attention_details.class
 com\emergentes\models\Pet.class
+com\emergentes\controllers\AutenticationController.class
 com\emergentes\dao\ReservationDAOimpl.class
 com\emergentes\utiles\ConexionBD.class
 com\emergentes\dao\HistoryDAO.class

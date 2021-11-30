@@ -9,7 +9,7 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private String url;
+    private String path;
 
     public User() {
     }
@@ -78,12 +78,12 @@ public class User {
         this.role = role;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPath() {
+        return path;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setPath(String path) {
+        this.path = path;
     }
     
     
