@@ -123,7 +123,7 @@ public class ServiceDAOimpl extends ConexionBD implements ServiceDAO{
                 s = new Service();
                 s.setId(rs.getInt("id"));
                 s.setName(rs.getString("name"));
-                s.setDescription(rs.getString("decription"));
+                s.setDescription(rs.getString("description"));
                 s.setCoste(rs.getFloat("coste"));
                 list.add(s);
             }

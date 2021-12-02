@@ -32,7 +32,7 @@
                     <td class="text-capitalize">${item.role}</td>
                     <td><a class="btn btn-warning btn-sm" href="UserController?op=edit&id=${item.id}"><i class="far fa-edit "></i></a></td>
                     <td><a class="btn btn-danger btn-sm" href="UserController?op=delete&id=${item.id}"
-                           onclick="return confirm('Esta seguro de eliminar a el usuario ${item.name}?');"><i class="far fa-trash-alt"></i></a></td>
+                           onclick="return confirm('Esta seguro de eliminar a el usuario     ${item.name}?');"><i class="far fa-trash-alt"></i></a></td>
                 </tr>
             </c:forEach>                
             </tbody>

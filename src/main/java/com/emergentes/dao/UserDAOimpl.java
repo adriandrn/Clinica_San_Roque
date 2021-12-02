@@ -103,7 +103,7 @@ public class UserDAOimpl extends ConexionBD implements UserDAO{
             stmt = conn.prepareStatement(SQL_GET_BY_ID);
             stmt.setInt(1, id);
             rs = stmt.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {                   
                 u.setId(rs.getInt("id"));
                 u.setCi(rs.getString("ci"));
                 u.setName(rs.getString("name"));

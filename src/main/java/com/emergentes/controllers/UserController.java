@@ -70,6 +70,7 @@ public class UserController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String role = request.getParameter("role");
+        String path = "users/def1.png";
         
         User u = new User();
         u.setId(id);
@@ -80,6 +81,7 @@ public class UserController extends HttpServlet {
         u.setEmail(email);
         u.setPassword(password);
         u.setRole(role);
+        u.setPath(path);
         
         if (id == 0) {
             try {

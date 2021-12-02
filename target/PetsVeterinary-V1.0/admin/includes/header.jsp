@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.emergentes.models.User"%>
 <%
-    User usu = (User)session.getAttribute("usu");
+    User usu = (User) session.getAttribute("ses");
 %>
 
 <!DOCTYPE html>
@@ -21,8 +21,7 @@
             <!-- Barra de navegacion -->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                    <a class="navbar-brand brand-logo" href="../index.jsp"><i class="fas fa-paw fa-2x"></i> Clinica San Roque</a>
-                    <a class="navbar-brand brand-logo-mini" href="../index.jsp"><i class="fas fa-paw"></i></a>
+                    <a class="navbar-brand brand-logo" href="../HomeController"><i class="fas fa-paw fa-2x"></i> Clinica San Roque</a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-stretch">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -30,8 +29,8 @@
                     </button>
                     <ul class="navbar-nav navbar-nav-right">                    
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-                                Salir  <i class="fas fa-sign-out-alt"></i>
+                            <a class="nav-link" href="../../HomeController" >
+                                Volver  <i class="fas fa-sign-out-alt"></i>
                             </a>
                         </li>
                     </ul>
@@ -68,15 +67,16 @@
                         <li class="nav-item nav-profile">
                             <div class="nav-link">
                                 <div class="profile-image">
-                                    <i class="fas fa-paw text-dark" style="font-size: 30px !important;"></i>
+                                    <!--<i class="fas fa-paw text-dark" style="font-size: 30px !important;"></i>-->
+                                    <img src="../../assets/img/<%= usu.getPath()%>" alt="mdo" width="32" height="32" class="rounded-circle">
                                 </div>
                                 <div class="profile-name">
                                     <p class="name">
                                         Bienvenido 
                                     </p>
-                                    <p class="name text-uppercase"><%= usu.getName() %></p>
+                                    <p class="name text-uppercase"><%= usu.getName()%></p>
                                     <p class="text-capitalize fw-bold">
-                                        <%= usu.getRole() %>
+                                        <%= usu.getRole()%>
                                     </p>
                                 </div>
                             </div>
@@ -88,19 +88,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../admin/pet.jsp">
+                            <a class="nav-link" href="../../PetController">
                                 <i class="fas fa-dog menu-icon"></i>
                                 <span class="menu-title">Mascotas</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../../ServiceController">
                                 <i class="fas fa-clipboard menu-icon"></i>
-                                <span class="menu-title">Reservas</span>
+                                <span class="menu-title">Servicios</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../admin/hour.jsp">
+                            <a class="nav-link" href="../../HourController">
                                 <i class="fas fa-clipboard menu-icon"></i>
                                 <span class="menu-title">Horarios</span>
                             </a>

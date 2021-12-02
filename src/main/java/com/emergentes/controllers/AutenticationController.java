@@ -28,13 +28,26 @@ public class AutenticationController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
+            HttpSession ses = request.getSession();
             String op = request.getParameter("op");
-            if (op.equals("login")) {
+            
+            switch(op){
+                case "login":
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    break;
+                case "register":
+                    request.getRequestDispatcher("register.jsp").forward(request, response);
+                    break;
+                default:
+                    ses.invalidate();
+                    response.sendRedirect("HomeController");
+            }
+
+            /*if (op.equals("login")) {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("register.jsp").forward(request, response);
-            }
+            }*/
             System.out.println("Operacion ejecutada con exito ingresando a la opcion: " + op);
         } catch (IOException | ServletException e) {
             System.out.println("Error ------>" + e);
@@ -74,10 +87,11 @@ public class AutenticationController extends HttpServlet {
                 HelpersDAO h = new HelpersDAO();
                 usu = h.getAuth(email, password);
                 System.out.println("Has iniciado sesion como: "+usu.getName());
-                ses.setAttribute("usu", usu);
+                ses.setAttribute("ses", usu);
                 //request.setAttribute("auth", usu);
                 //request.getRequestDispatcher("admin/index.jsp").forward(request, response);
                 response.sendRedirect("admin/index.jsp");
+                
             } else {
                 user.insert(usu);
                 response.sendRedirect("HomeController");

@@ -81,7 +81,7 @@ public class PetDAOimpl extends ConexionBD implements PetDAO{
         PreparedStatement stmt = null;
         try {
             conn = ConexionBD.getConnection();
-            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt = conn.prepareStatement(SQL_DELETE);
             stmt.setInt(1, id);
             stmt.executeUpdate();
             
@@ -142,12 +142,14 @@ public class PetDAOimpl extends ConexionBD implements PetDAO{
                 p.setUser_id(rs.getInt("user_id"));
                 p.setName(rs.getString("name"));
                 p.setRace(rs.getString("race"));
-                p.setSpecie(rs.getString("species"));
+                p.setSpecie(rs.getString("specie"));
                 p.setState(rs.getString("state"));
                 p.setId(rs.getInt("age"));
                 p.setColor(rs.getString("color"));
                 p.setPath(rs.getString("path"));
+                p.setUser_id(rs.getInt("user_id"));
                 p.setUser_name(rs.getString("user_name"));
+                //System.out.println(rs.getString("name"));
                 list.add(p);
             }
             
