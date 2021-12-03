@@ -44,8 +44,8 @@
                         <span class="fas fa-bars"></span>
                     </button>
                 </div>
-                
-                
+
+
             </nav>
             <!-- Selectores de temas-->
             <div class="container-fluid page-body-wrapper">
@@ -68,6 +68,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Barra lateral -->
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -94,39 +95,50 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="../../UserController">
-                                <i class="fas fa-users menu-icon"></i>
-                                <span class="menu-title">Usuarios</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../PetController">
-                                <i class="fas fa-dog menu-icon"></i>
-                                <span class="menu-title">Mascotas</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../ServiceController">
-                                <i class="fas fa-clipboard menu-icon"></i>
-                                <span class="menu-title">Servicios</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../HourController">
-                                <i class="fas fa-clipboard menu-icon"></i>
-                                <span class="menu-title">Horarios</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-list-alt menu-icon"></i>
-                                <span class="menu-title">Historiales</span>
-                            </a>
-                        </li>
+
+                        <c:if test="${user.getRole() == 'admin'}">  
+                            <li class="nav-item ">
+                                <a class="nav-link" href="../../UserController">
+                                    <i class="fas fa-users menu-icon"></i>
+                                    <span class="menu-title">Usuarios</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../PetController">
+                                    <i class="fas fa-dog menu-icon"></i>
+                                    <span class="menu-title">Mascotas</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../ServiceController">
+                                    <i class="fas fa-clipboard menu-icon"></i>
+                                    <span class="menu-title">Servicios</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../HourController">
+                                    <i class="fas fa-clipboard menu-icon"></i>
+                                    <span class="menu-title">Horarios</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-list-alt menu-icon"></i>
+                                    <span class="menu-title">Reservas</span>
+                                </a>
+                            </li>  
+                        </c:if>
+                        <c:if test="${user.getRole() != 'admin'}">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../PetController">
+                                    <i class="fas fa-dog menu-icon"></i>
+                                    <span class="menu-title">Mis mascotas</span>
+                                </a>
+                            </li>
+
+                        </c:if>
                     </ul>
                 </nav>
-
-                <!-- Content main-panel-->
                 <div class="main-panel">
                     <div class="content-wrapper">

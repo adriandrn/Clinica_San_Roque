@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../assets/css/styles.css">
         <link rel="shortcut icon" href="../../assets/img/icon/netcenter_7.ico" type="image/x-icon">
-        <title>Document</title>
+        <title>San Roque</title>
     </head>
     <body>
             
@@ -37,7 +37,7 @@
                             <a class="nav-link" href="contact.jsp">Contactos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="reservation.jsp">Reservas</a>
+                            <a class="nav-link" href="ReservationController">Reservas</a>
                         </li>
                     </ul>    
                     <c:if test="${user!=null}">
@@ -52,8 +52,12 @@
                                 </c:if>
                             </a>
                             <ul class="dropdown-menu text-small" >
-                                <li><a class="dropdown-item" href="../../admin/index.jsp">Administrar</a></li>
-                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <c:if test="${user.getRole() == 'admin'}">                                    
+                                <li><a class="dropdown-item" href="AdminController">Administrar</a></li>
+                                </c:if>
+                                <c:if test="${user.getRole() != 'admin'}">
+                                <li><a class="dropdown-item" href="AdminController">Perfil</a></li>
+                                </c:if>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="AutenticationController?action=exit">Salir</a></li>
                             </ul>

@@ -18,11 +18,6 @@
                     Te extrañaremos
                 </div>
             </c:if>
-            <%--<c:if test="${message == 'reject'}">
-                <div class="position-absolute bg-danger rounded py-2 px-3 text-light" style="z-index:10;right:25px;top:15px;">
-                    Registro fallido
-                </div>
-            </c:if>--%>
             <div class="carousel-item active element">
                 <img src="assets/img/pet-1.jpg" height="100%" style="object-fit: cover;" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
@@ -67,6 +62,69 @@
             </c:forEach>
         </div>
 
+    </div>
+
+
+    <div class="d-flex w-75 mx-auto my-3">
+        <div class="row my-2">
+            <div class="col-md-6 col-sm-12">
+                <h3 class="">MISION</h3>
+                <p class="">La misión de una empresa es una herramienta estratégica que sintetiza el propósito de una empresa. Es el objetivo o la propuesta que sirve a la sociedad, así como la base del plan de negocios y de las estrategias operativas. Generalmente incluye una descripción general de la organización, su función y objetivos.</p>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <img src="assets/img/pet-1.jpg" class="w-75 d-flex mx-auto rounded-circle" alt="100px">
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex w-75 mx-auto my-3">
+        <div class="row my-2">
+            <div class="col-md-6 col-sm-12">
+                <img src="assets/img/pet-1.jpg" class="w-75 d-flex mx-auto rounded-circle" alt="100px">
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <h3 class="">VISION</h3>
+                <p class="">La misión de una empresa es una herramienta estratégica que sintetiza el propósito de una empresa. Es el objetivo o la propuesta que sirve a la sociedad, así como la base del plan de negocios y de las estrategias operativas. Generalmente incluye una descripción general de la organización, su función y objetivos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container w-75">
+        <img src="assets/img/org.jpeg" class="w-100 d-flex mx-auto" alt="100px">
+    </div>
+    <div class="container w-75 my-2">
+        <div class="row row-cols-1 row-cols-lg-2 ">
+            <div class="col my-3 ">  
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">OBJETIVOS</h3>
+                        <p class="card-text">
+                        <ul>
+                            <li>Desarrollar</li>
+                            <li>MMMMMM</li>
+                            <li>Pan</li>
+                            <li>Frutas</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col my-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">METAS</h3>
+                        <p class="card-text">
+                        <ul>
+                            <li>leche</li>
+                            <li>Huevos</li>
+                            <li>Pan</li>
+                            <li>Frutas</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </section>

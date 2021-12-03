@@ -51,9 +51,6 @@ public class PetController extends HttpServlet {
                     request.setAttribute("pets", list);
                     request.getRequestDispatcher("admin/pet.jsp").forward(request, response);
                     System.out.println("envia lista mascota");
-                    /*for (Pet pet : list) {
-                        System.out.println(pet.getName());
-                    }*/
                     break;
             }
         } catch (Exception e) {

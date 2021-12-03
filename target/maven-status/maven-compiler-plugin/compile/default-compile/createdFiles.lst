@@ -16,6 +16,7 @@ com\emergentes\dao\Reservation_serviceDAO.class
 com\emergentes\dao\QueryDAOimpl.class
 com\emergentes\dao\ServiceDAO.class
 com\emergentes\models\Reservation_service.class
+com\emergentes\controllers\AdminController.class
 com\emergentes\dao\QueryDAO.class
 com\emergentes\models\Attention_details.class
 com\emergentes\models\Pet.class

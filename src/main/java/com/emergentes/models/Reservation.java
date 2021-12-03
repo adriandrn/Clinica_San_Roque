@@ -6,7 +6,7 @@ public class Reservation {
     private int id;
     private int user_id;
     private int hour_id;
-    private Date reservation_date;
+    private String reservation_date;
 
     public Reservation() {
     }
@@ -35,11 +35,11 @@ public class Reservation {
         this.hour_id = hour_id;
     }
 
-    public Date getReservation_date() {
+    public String getReservation_date() {
         return reservation_date;
     }
 
-    public void setReservation_date(Date reservation_date) {
+    public void setReservation_date(String reservation_date) {
         this.reservation_date = reservation_date;
     }    
 }

@@ -33,7 +33,7 @@ public class ReservationDAOimpl extends ConexionBD implements ReservationDAO{
         try{
             conn = ConexionBD.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setDate(1, reservation.getReservation_date());
+            stmt.setString(1, reservation.getReservation_date());
             stmt.setInt(2, reservation.getUser_id());
             stmt.setInt(3, reservation.getHour_id());
             stmt.executeUpdate();
@@ -52,7 +52,7 @@ public class ReservationDAOimpl extends ConexionBD implements ReservationDAO{
         try{
             conn = ConexionBD.getConnection();
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setDate(1, reservation.getReservation_date());
+            stmt.setString(1, reservation.getReservation_date());
             stmt.setInt(2, reservation.getUser_id());
             stmt.setInt(3, reservation.getHour_id());
             stmt.setInt(4, reservation.getId());
@@ -95,7 +95,7 @@ public class ReservationDAOimpl extends ConexionBD implements ReservationDAO{
             rs = stmt.executeQuery();
             while (rs.next()) {                
                 r.setId(rs.getInt("id"));
-                r.setReservation_date(rs.getDate("reservation_date"));
+                r.setReservation_date(rs.getString("reservation_date"));
                 r.setUser_id(rs.getInt("user_id"));
                 r.setHour_id(rs.getInt("hour_id"));
             }
@@ -123,7 +123,7 @@ public class ReservationDAOimpl extends ConexionBD implements ReservationDAO{
             while (rs.next()) {                
                 r = new Reservation();
                 r.setId(rs.getInt("id"));
-                r.setReservation_date(rs.getDate("reservation_date"));
+                r.setReservation_date(rs.getString("reservation_date"));
                 r.setUser_id(rs.getInt("user_id"));
                 r.setHour_id(rs.getInt("hour_id"));
                 list.add(r);

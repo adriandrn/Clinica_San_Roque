@@ -63,8 +63,10 @@ public class AutenticationController extends HttpServlet {
 
                     if(errors.isEmpty()){
                         session.setAttribute("user",user);
-                        request.setAttribute("message","success");
-                        request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+                        //request.setAttribute("message","success");
+                        //request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+                        response.sendRedirect("HomeController");
+                        System.out.println("Login in------------------------------");
                     }else{
                         request.setAttribute("errors",errors);
                         request.getRequestDispatcher("login.jsp").forward(request, response);
