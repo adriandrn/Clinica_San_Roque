@@ -2,49 +2,62 @@
 
     
     <div>
-      <button type="button" class="btn btn-success position-absolute" style="margin-top: 450px; padding: 10px; margin-left: 50px;">Realizar Consulta</button>
-      <img src="assets/img/image-doc.jpg" class="d-block w-100" alt="..." style="object-fit: cover;">
+        <img src="assets/img/image-doc.jpg" class="d-block w-100" alt="..." style="object-fit: cover;">
     </div>
     
     <div class="d-grid gap-2">
-      <button class="btn btn-success" type="button">Consultas Frecuentes</button>
+      <h1 class="btn btn-success fs-1">Reseñas de Clientes</h1>
+      <p class="mx-5 fs-5 my-0">Te pedimos que nos compartas tus anecdotas con nuestros servicios para que podamos seguir creciendo como veterinaria y como institución</p>
     </div>
-    <div class="container-fluid row mx-auto w-75" >
-      <form class="w-100 row">
-        <div class="form-check col-md-2">
-          <img src="images/imagen2.png " class="img-thumbnail" alt="" style="width: 50px;"><i class="">Juan Perez Gomez</i>
-        </div>
-        <div class="col-md-10">
-            <input type="text" class="form-control form-control-sm mt-3 " id="consulta" disabled value="">
-        </div>
-        <div class="form-check col-md-2">
-          <img src="images/imagen2.png " class="img-thumbnail" alt="" style="width: 50px;"><i class="">Admin</i>
-        </div>
-        <div class="col-md-10">
-            <input type="text" class="form-control form-control-sm mt-3 " id="consulta" disabled value="">
-        </div>
-        
-      </form>
-      <form class="w-100 row">
-        <div class="form-check col-md-2">
-          <img src="images/imagen2.png " class="img-thumbnail" alt="" style="width: 50px;"><i class="">Miguel Candia Flores</i>
-        </div>
-        <div class="col-md-10">
-            <input type="text" class="form-control form-control-sm mt-3 " id="consulta" disabled value="">
-        </div>
-        <div class="form-check col-md-2">
-          <img src="images/imagen2.png " class="img-thumbnail" alt="" style="width: 50px;"><i class="">Admin</i>
-        </div>
-        <div class="col-md-10">
-            <input type="text" class="form-control form-control-sm mt-3 " id="consulta" disabled value="">
-        </div>
-        <div class="col-md-6">
-            <input type="text" class="form-control form-control-sm mt-3" id="consulta" placeholder="Realizar consulta">
-        </div>
-        <div class="col-12 mr-auto mt-2">
-          <button type="submit" class="btn btn-outline-success">Enviar</button>
-        </div>
-      </form>
+    <div class="container" style="font-family: 'Open Sans'">
+        <a onclick="document.getElementById('consulta').focus();" class="btn btn-info text-light my-2" 
+           href="<%=session.getAttribute("user")!=null ? "#query-form" : "login.jsp" %>"
+           >
+            Realizar reseña
+        </a>
+        <hr>
+        <c:if test="${user==null}">
+            <h4 class="fs-5 fw-bold">Para realizar una reseña debes registrarte en nuestro sitio web</h4>
+        </c:if>
+        <c:if test="${user!=null}">
+            <h4 class="fs-5 fw-bold">Estas son nuestras ultimas reseñas</h4>
+        </c:if>
+    </div>
+    
+    <div class="container-fluid row mx-auto w-75 mt-3 mb-4" style="font-family: 'Open Sans'">
+        <c:forEach var="query" items="${queries}">
+            <div class="d-flex gap-4 mb-1">
+                <div>
+                    <img src="assets/img/default_user.png" style="object-fit: cover;" class="rounded-circle" width="40px" height="40px"/>
+                </div>
+                <div>
+                    <h5 class="my-0 fw-bold" style="font-size: 16px;">${query.user_name} <span class="text-muted fw-normal">(${query.query_date})</span></h5>
+                    <p class="my-0 fs-6">${query.description}</p>
+                </div>
+            </div>
+            <hr>
+        </c:forEach>
+            
+        <c:if test="${user!=null}">
+            <form class="w-100 row" id="query-form" action="QueryController?action=store" method="POST">
+                <input type="hidden" name="user_id" value="${user.id}"/>
+                <div class="d-flex gap-4">
+                  <div>
+                      <img src="assets/img/default_user.png" style="object-fit: cover;" class="rounded-circle" width="40px" height="40px"/>
+                  </div>
+                  <div>
+                      <a class="my-0 fw-bold text-decoration-none" style="font-size: 16px;">${user.name}</a>
+                      <p>${user.role}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <input name="description" type="text" class="form-control form-control-sm" id="consulta" placeholder="Realizar consulta">
+                </div>
+                <div class="col-12 mr-auto mt-2">
+                  <button type="submit" class="btn btn-outline-success">Enviar</button>
+                </div>
+            </form>
+        </c:if>
     </div>
     <footer class="bg-success">
       <div class="row w-75 mx-auto pt-2">
@@ -68,12 +81,5 @@
         </div> 
       </div>
    </footer>
-   <!-- <div class="row w-75 d-flex mx-auto mt-5">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30172.927342492836!2d-65.2592666!3d-19.036639!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93fbc8cef38e6c77%3A0xb405926e8bb6321a!2sMercado%20Campesino%20Sucre!5e0!3m2!1ses!2sbo!4v1637693177808!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
-   </div> -->
-
-   
-  
 </body>
 </html>

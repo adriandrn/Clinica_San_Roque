@@ -11,7 +11,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 public class ConexionBD {
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/db_veterinaria";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/bd_pets";
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "";
     private static BasicDataSource getDataSource(){

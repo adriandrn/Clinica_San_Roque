@@ -1,14 +1,4 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="com.emergentes.models.User"%>
-<%@page session="true" %>
-<%
-    User usu = (session.getAttribute("ses") != null) ? (User) session.getAttribute("ses") : new User();
-%>
-<%-- 
-    Document   : inde
-    Created on : 23 nov. 2021, 21:14:42
-    Author     : DRN-PC
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +15,7 @@
         <title>Document</title>
     </head>
     <body>
+            
         <nav class="navbar navbar-expand-lg navbar-dark bg-success" id="menu">
             <div class="container">
                 <a class="navbar-brand " href="index.html"><i class="fas fa-paw"></i> VETERINARIA SAN ROQUE</a>
@@ -40,7 +31,7 @@
                             <a class="nav-link" href="PatientController">Pacientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="queries.jsp">Consultas</a>
+                            <a class="nav-link" href="QueryController">Consultas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.jsp">Contactos</a>
@@ -48,29 +39,30 @@
                         <li class="nav-item">
                             <a class="nav-link" href="reservation.jsp">Reservas</a>
                         </li>
-                    </ul>  
-
-                    <% if (usu.getId() != 0) {%>  
-                   
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"><span class="fs-5 text-light"><%= usu.getName() %></span>
-                            <img src="../../assets/img/<%= usu.getPath()%>" alt="" width="32" height="32" class="rounded-circle">
-                        </a>
-                        <ul class="dropdown-menu text-small" >
-                            <li><a class="dropdown-item" href="../../admin/index.jsp">Administrar</a></li>
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="AutenticationController?op=close">Salir</a></li>
-                        </ul>
-                    </div>
-
-                    <%                    } else {      %>
-
-                    <a href="AutenticationController?op=login" class="btn btn-outline-light me-2 ">Ingresar</a>           
-                    <a href="AutenticationController?op=register" class="btn btn-outline-light me-5 ">Registro</a>    
-
-                    <%                           }%>
-
+                    </ul>    
+                    <c:if test="${user!=null}">
+                        <div class="dropdown text-end">
+                            <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="fs-5 text-light">${user.name}</span>
+                                <c:if test="${user.getPath()=='empty'}">
+                                    <img src="../../assets/img/default_user.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                                </c:if>
+                                <c:if test="${user.getPath()!='empty'}">
+                                    <img src="../../assets/img/${user.path}" alt="" width="32" height="32" class="rounded-circle">
+                                </c:if>
+                            </a>
+                            <ul class="dropdown-menu text-small" >
+                                <li><a class="dropdown-item" href="../../admin/index.jsp">Administrar</a></li>
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="AutenticationController?action=exit">Salir</a></li>
+                            </ul>
+                        </div>
+                    </c:if>
+                    <c:if test="${user==null}">
+                        <a href="login.jsp" class="btn btn-outline-light me-2 ">Ingresar</a>           
+                        <a href="register.jsp" class="btn btn-outline-light me-5 ">Registro</a>    
+                    </c:if>
                 </div>
             </div>
         </nav>

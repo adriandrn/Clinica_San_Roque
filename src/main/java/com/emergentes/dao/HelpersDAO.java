@@ -183,39 +183,7 @@ public class HelpersDAO {
             ConexionBD.close(stmt);
             ConexionBD.close(conn);
         }
-
         return list;
     }
-
-    public User getAuth(String email, String password) throws Exception {
-        Connection conn=null;
-        PreparedStatement stmt=null;
-        ResultSet rs = null;
-        User u = new User();
-        try{
-            conn = ConexionBD.getConnection();
-            stmt = conn.prepareStatement(SQL_GET_AUTH);
-            stmt.setString(1, email);
-            stmt.setString(2, password);
-            rs = stmt.executeQuery();
-            while (rs.next()) {                
-                u.setId(rs.getInt("id"));
-                u.setCi(rs.getString("ci"));
-                u.setName(rs.getString("name"));
-                u.setAddress(rs.getString("address"));
-                u.setPhone(rs.getString("phone"));
-                u.setEmail(rs.getString("email"));
-                u.setPassword(rs.getString("password"));
-                u.setRole(rs.getString("role"));
-                u.setPath(rs.getString("path"));
-            }
-        }catch(SQLException ex){
-            ex.printStackTrace(System.out);
-        }finally{
-            ConexionBD.close(stmt);
-            ConexionBD.close(conn);
-        }
-        
-        return u;
-    }
+    
 }

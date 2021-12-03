@@ -1,3 +1,4 @@
+com\emergentes\controllers\ReservationController.class
 com\emergentes\controllers\PetController.class
 com\emergentes\dao\UserDAOimpl.class
 com\emergentes\controllers\UserController.class
@@ -30,6 +31,7 @@ com\emergentes\models\History.class
 com\emergentes\dao\ReservationDAO.class
 com\emergentes\dao\ServiceDAOimpl.class
 com\emergentes\controllers\HourController.class
+com\emergentes\controllers\QueryController.class
 com\emergentes\dao\UserDAO.class
 com\emergentes\models\Query.class
 com\emergentes\models\Reservation.class

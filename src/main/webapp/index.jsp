@@ -8,6 +8,21 @@
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
+            <c:if test="${message == 'success'}">
+                <div class="position-absolute bg-info rounded py-2 px-3 text-light" style="z-index:10;right:25px;top:15px;">
+                    Registro exitoso
+                </div>
+            </c:if>
+            <c:if test="${message == 'exit-success'}">
+                <div class="position-absolute bg-info rounded py-2 px-3 text-light" style="z-index:10;right:25px;top:15px;">
+                    Te extrañaremos
+                </div>
+            </c:if>
+            <%--<c:if test="${message == 'reject'}">
+                <div class="position-absolute bg-danger rounded py-2 px-3 text-light" style="z-index:10;right:25px;top:15px;">
+                    Registro fallido
+                </div>
+            </c:if>--%>
             <div class="carousel-item active element">
                 <img src="assets/img/pet-1.jpg" height="100%" style="object-fit: cover;" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">

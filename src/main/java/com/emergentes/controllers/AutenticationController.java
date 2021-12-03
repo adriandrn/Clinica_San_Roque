@@ -4,12 +4,12 @@
  */
 package com.emergentes.controllers;
 
-import com.emergentes.dao.HelpersDAO;
 import com.emergentes.dao.UserDAO;
 import com.emergentes.dao.UserDAOimpl;
 import com.emergentes.models.User;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,79 +27,81 @@ public class AutenticationController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            HttpSession ses = request.getSession();
-            String op = request.getParameter("op");
-            
-            switch(op){
-                case "login":
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                    break;
-                case "register":
-                    request.getRequestDispatcher("register.jsp").forward(request, response);
-                    break;
-                default:
-                    ses.invalidate();
-                    response.sendRedirect("HomeController");
-            }
+        String action = request.getParameter("action")!=null ? request.getParameter("action") : "";
+        HttpSession session = request.getSession();
 
-            /*if (op.equals("login")) {
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("register.jsp").forward(request, response);
-            }*/
-            System.out.println("Operacion ejecutada con exito ingresando a la opcion: " + op);
-        } catch (IOException | ServletException e) {
-            System.out.println("Error ------>" + e);
+        switch(action){
+            case "exit":
+                session.invalidate();
+                request.setAttribute("message","exit-success");
+                request.getRequestDispatcher("HomeController").forward(request, response);
+                break;
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        String action = request.getParameter("action")!=null ? request.getParameter("action") : "";
+        UserDAO userDao = new UserDAOimpl();
+        List<String> errors = new ArrayList<>();
+        User user = new User();
+        HttpSession session = request.getSession();
+        String email,password;
         try {
-            UserDAO user = new UserDAOimpl();
-            User usu;
+            switch(action){
+                case "login":
+                    email = request.getParameter("email");
+                    password = request.getParameter("password");
+                    user = userDao.getEmailResult(email);
+                    if(user.getId()==0){
+                        errors.add("email");
+                    }else if(!user.getPassword().equals(password)){
+                        errors.add("password");
+                    }
 
-            String ci = request.getParameter("ci");
-            String name = request.getParameter("name");
-            String address = request.getParameter("address");
-            String phone = request.getParameter("phone");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String role = request.getParameter("role");
-            String path = "none";
-
-            usu = new User();
-            usu.setCi(ci);
-            usu.setName(name);
-            usu.setAddress(address);
-            usu.setPhone(phone);
-            usu.setEmail(email);
-            usu.setPassword(password);
-            usu.setRole(role);
-            usu.setPath(path);
-            
-
-            if (ci == null) {
-                HttpSession ses = request.getSession();
-                HelpersDAO h = new HelpersDAO();
-                usu = h.getAuth(email, password);
-                System.out.println("Has iniciado sesion como: "+usu.getName());
-                ses.setAttribute("ses", usu);
-                //request.setAttribute("auth", usu);
-                //request.getRequestDispatcher("admin/index.jsp").forward(request, response);
-                response.sendRedirect("admin/index.jsp");
-                
-            } else {
-                user.insert(usu);
-                response.sendRedirect("HomeController");
-                System.out.println("Registro insertado con exito");
+                    if(errors.isEmpty()){
+                        session.setAttribute("user",user);
+                        request.setAttribute("message","success");
+                        request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+                    }else{
+                        request.setAttribute("errors",errors);
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                    }                    
+                    break;
+                case "register":
+                    String name = request.getParameter("name");
+                    String address = request.getParameter("address");
+                    String ci = request.getParameter("ci");
+                    String phone = request.getParameter("phone");
+                    email = request.getParameter("email");
+                    password = request.getParameter("password");
+                    
+                    user.setName(name);
+                    user.setCi(ci);
+                    user.setAddress(address);
+                    user.setPhone(phone);
+                    user.setEmail(email);
+                    user.setPassword(password);
+                    
+                    int i = userDao.insert(user);
+                    System.out.println(i);
+                    if(i==1){
+                        request.setAttribute("message","success");
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                    }else{
+                        request.setAttribute("message","reject");
+                        request.getRequestDispatcher("register.jsp").forward(request, response);
+                    }
+                    break;
+                default:
+                    System.out.println("Default");
+                    response.sendRedirect("HomeController");
+                    break;
             }
-
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
         }
-
     }
 }

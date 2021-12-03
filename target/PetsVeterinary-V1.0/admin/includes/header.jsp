@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.emergentes.models.User"%>
 <%
-    User usu = (User) session.getAttribute("ses");
+    User user = (User) session.getAttribute("user");
 %>
 
 <!DOCTYPE html>
@@ -23,13 +23,19 @@
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                     <a class="navbar-brand brand-logo" href="../HomeController"><i class="fas fa-paw fa-2x"></i> Clinica San Roque</a>
                 </div>
+                <c:if test="${message!=null}">
+                    <div class="position-absolute bg-success rounded p-3" style="color:white;right:100px;">
+                        <i class="fas fa-check-circle fs-5"></i>
+                        <span>Login exitoso</span>
+                    </div>
+                </c:if>
                 <div class="navbar-menu-wrapper d-flex align-items-stretch">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="fas fa-bars"></span>
                     </button>
                     <ul class="navbar-nav navbar-nav-right">                    
                         <li class="nav-item">
-                            <a class="nav-link" href="../../HomeController" >
+                            <a class="nav-link" href="/HomeController">
                                 Volver  <i class="fas fa-sign-out-alt"></i>
                             </a>
                         </li>
@@ -38,6 +44,8 @@
                         <span class="fas fa-bars"></span>
                     </button>
                 </div>
+                
+                
             </nav>
             <!-- Selectores de temas-->
             <div class="container-fluid page-body-wrapper">
@@ -68,15 +76,20 @@
                             <div class="nav-link">
                                 <div class="profile-image">
                                     <!--<i class="fas fa-paw text-dark" style="font-size: 30px !important;"></i>-->
-                                    <img src="../../assets/img/<%= usu.getPath()%>" alt="mdo" width="32" height="32" class="rounded-circle">
+                                    <c:if test="${user.getPath()=='empty'}">
+                                        <img src="../../assets/img/default_user.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                                    </c:if>
+                                    <c:if test="${user.getPath()!='empty'}">
+                                        <img src="../../assets/img/<%= user.getPath()%>" alt="mdo" width="32" height="32" class="rounded-circle">
+                                    </c:if>                                    
                                 </div>
                                 <div class="profile-name">
                                     <p class="name">
                                         Bienvenido 
                                     </p>
-                                    <p class="name text-uppercase"><%= usu.getName()%></p>
+                                    <p class="name text-uppercase"><%= user.getName()%></p>
                                     <p class="text-capitalize fw-bold">
-                                        <%= usu.getRole()%>
+                                        <%= user.getRole()%>
                                     </p>
                                 </div>
                             </div>
